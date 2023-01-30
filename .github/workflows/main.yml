@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_Token }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,6 +20,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: "${{ env.DOCKER_USERNAME }}/todo-frontend:${{ env.GITHUB_RUN_ID }}"
-        username: ${{ env.DOCKER_USERNAME }}
-        password: ${{ env.DOCKER_PASSWORD }}
+        tags: "${{ env.DOCKERHUB_USERNAME }}/todo-frontend:${{ env.GITHUB_RUN_ID }}"
+        username: ${{ env.DOCKERHUB_USERNAME }}
+        password: ${{ env.DOCKERHUB_TOKEN }}
